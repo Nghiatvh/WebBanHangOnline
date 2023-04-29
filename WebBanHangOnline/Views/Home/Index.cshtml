@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Shop Online";
+    ViewBag.SeoDescription = "Shop Online";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/slider.css">
+<!-- Slider -->
+
+<div class="main_slider">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides">
+        <div class="numbertext">1 / 2</div>
+        <a href="/products"><img src="~/Content/assets/images/slider.jpg" style="width:100%"></a>
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">2 / 2</div>
+        <a href="/products"><img src="~/Content/assets/images/slide.jpg" style="width:100%"></a>
+    </div>
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <!-- The dots/circles -->
+
+</div>
+<br>
+
+<!-- Banner -->
+@*@Html.Action("MenuProductCategory", "Menu")*@
+
+<!-- New Arrivals -->
+
+<div class="new_arrivals">
+    <div class="container">
+        @Html.Action("MenuArrivals", "Menu")
+    </div>
+</div>
+
+<!-- Deal of the week -->
+
+<div class="">
+    <a href="/products"><img src="~/Content/assets/images/bannernew.jpg" style="width:100%"></a>
+</div>
+
+<!-- Best Sellers -->
+@Html.Action("Partial_ProductSales", "Products")
+<!-- Benefit -->
+
+<div class="benefit">
+    <div class="container">
+        <div class="row benefit_row">
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+                    <div class="benefit_content">
+                        <h6>Free Shipping</h6>
+                        <p>Fast within 24h</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+                    <div class="benefit_content">
+                        <h6>Cash on Delivery</h6>
+                        <p>Convenient and reliable</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
+                    <div class="benefit_content">
+                        <h6>45 days refund</h6>
+                        <p>Without no extra fee</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+                    <div class="benefit_content">
+                        <h6>Available entire week</h6>
+                        <p>8AM - 9PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/assets/js/slider.js"></script>

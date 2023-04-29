@@ -1,0 +1,83 @@
+﻿@model IEnumerable<WebBanHangOnline.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Account";
+}
+
+@section naviheader{
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin" class="nav-link">@ViewBag.Title</a>
+        </li>
+    </ul>
+}
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Account List</h3>
+
+            <div class="card-tools">
+                <a href="/admin/account/create" class="btn btn-success">Add</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>User Name</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Status </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        var i = 1;
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.UserName</td>
+                                <td>@item.FullName</td>
+                                <td>@item.Email</td>
+                                <td>
+                                    @if (item.isActive == true)
+                                    {
+                                        <a href="@Url.Action("DisableUser","Account",new {userId = item.Id })" class="btn btn-sm btn-primary">Active</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("DisableUser","Account",new {userId = item.Id })" class="btn btn-sm btn-danger btndelete">Disable</a>
+                                    }
+                                  
+
+                                </td>
+                            </tr>
+                            i++;
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+<!-- /.content -->
