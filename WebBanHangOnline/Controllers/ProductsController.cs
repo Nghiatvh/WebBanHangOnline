@@ -11,7 +11,7 @@ namespace WebBanHangOnline.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Products
-        public ActionResult Index(string searchString, int pageIndex = 1, int pageSize = 1)
+        public ActionResult Index(string searchString, int pageIndex = 1, int pageSize = 10)
         {
             var product = from p in db.Products
                           select p;
@@ -21,10 +21,15 @@ namespace WebBanHangOnline.Controllers
             {
                 product = product.Where(s => s.Title.Contains(searchString));
             }
-            product = product.OrderBy(p => p.Id);
-            var data = product.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            if (pageIndex > 0 && pageSize > 0)
+            {
+                product = product.OrderBy(p => p.Id);
+                var data = product.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+                return View(data);
+            }
             
-            return View(data);
+            
+            return View(product);
         }
 
         public ActionResult Detail(string alias,int id)
