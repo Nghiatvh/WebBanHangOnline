@@ -134,6 +134,9 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                     TempData["Message"] = "Price is invalid !";
                     return RedirectToAction("Edit");
                 }
+                var item = db.ProductImages.Where(x => x.ProductId == model.Id).Single();
+
+                model.Image = item.Image.ToString();
                 db.Products.Attach(model);
                 db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
